@@ -24,6 +24,12 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+  res.locals.path = req.path;
+
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/guests', guestsRouter);
 app.use('/reminders', remindersRouter);

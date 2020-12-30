@@ -1,19 +1,23 @@
-doctype html
-html
+<!DOCTYPE html>
+html(lang="pl")
   head
-    title= title
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel='stylesheet', href='/stylesheets/style.css')
+    title= title
+
   body
-    ul
-      li
-        a(href="/") Strona Główna
-    ul
-      li
-        a(href="/guests") Goście
-    ul
-      li
-        a(href="/reminders") Przypomnienia
-    ul
-      li
-        a(href="/login") Logowanie
+    nav
+      ul
+        li
+          a(href="/" class=path == "/" ? 'active' : '') Strona Główna
+      ul
+        li
+          a(href="/guests" class=path == "/guests" ? 'active' : '') Goście
+      ul
+        li
+          a(href="/reminders" class=path == "/reminders" ? 'active' : '') Przypomnienia
+      ul
+        li
+          a(href="/login" class=path == "/login" ? 'active' : '') Logowanie
     block content
