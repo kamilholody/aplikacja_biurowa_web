@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  h1= title
+  form(method='post')
+    p 
+      label Imię:
+      input(type='text' name='guestsName')
+    p 
+      label Nazwisko:
+      input(type='text' name='guestsSurname')
+
+    p 
+      label Nazwa firmy:
+      input(type='text' name='companyName')
+
+    p 
+      label Godzina wejścia:
+      input(type='time' name='hourOfComing')
+
+    p 
+      label Godzina wyjścia:
+      input(type='time' name='hourOfDeparture')
+    p 
+      label Data:
+      input(type='date' name='dateOfComing')
+ 
+    p  
+      label Cel:
+      textarea(name='purpose')
+
+    p
+      input(type='submit' value='Zapisz')
+
+  if errors.errors !== undefined
+    each message in errors.errors
+      p=message
+  

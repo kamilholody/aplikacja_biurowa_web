@@ -3,9 +3,11 @@ html(lang="pl")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel='stylesheet', href='/stylesheets/style.css')
     title= title
 
+    <script src="https://kit.fontawesome.com/496f611049.js" crossorigin="anonymous"></script>
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  
   body
     nav
       ul
@@ -17,6 +19,9 @@ html(lang="pl")
       ul
         li
           a(href="/reminders" class=path == "/reminders" ? 'active' : '') Przypomnienia
+      ul
+        li
+          a(href="/users" class=path == "/users" ? 'active' : '') Konto
       ul
         li
           a(href="/login" class=path == "/login" ? 'active' : '') Logowanie

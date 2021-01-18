@@ -1,21 +1,69 @@
 body {
-  padding: 50px;
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: royalblue;
-}
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', sans-serif;
+  font-size: 15px;
+  background-color: #0cbaba;
+  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+  color: white;
 
-a {
-  color: black;
-  font-size: 18px;
-
-}
-
-li {
-  list-style: square
 }
 
 .active {
   font-weight: bold;
-  color: green;
+  color: lime;
+}
+
+h1,
+p {
+  text-align: center;
+}
+
+
+nav {
+  height: 50px;
+  text-align: right;
+  line-height: 20px;
+  background-color: black;
+}
+
+nav ul {
+  display: inline-block;
+  list-style: none;
+}
+
+nav li a {
+  padding: 0 5px;
+  text-transform: uppercase;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color lime .3s;
+}
+
+nav li a:hover {
+  color: lime;
+}
+
+input,
+textarea {
+  padding: 5px 5px;
+  border-radius: 5px;
+  left: 20px;
+  border: 10px;
+  cursor: pointer;
+  width: 15%;
+}
+
+
+textarea {
+  width: 20%;
+  height: 70px;
+}
+
+label {
+  display: block;
+  margin: 0;
+  overflow: hidden;
 }
