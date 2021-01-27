@@ -2,37 +2,39 @@ extends ../layout
 
 block content
   h1= title
+
+  if errors.errors !== undefined
+    each message in errors.errors
+      p=message
+      
+
   form(method='post')
     p 
       label Imię:
-      input(type='text' name='guestsName')
+      input(type='text' name='guestsName' value=body.guestsName || '')
     p 
       label Nazwisko:
-      input(type='text' name='guestsSurname')
+      input(type='text' name='guestsSurname' value=body.guestsSurname || '')
 
     p 
       label Nazwa firmy:
-      input(type='text' name='companyName')
+      input(type='text' name='companyName' value=body.companyName || '')
 
     p 
       label Godzina wejścia:
-      input(type='time' name='hourOfComing')
+      input(type='time' name='hourOfComing' value=body.hourOfComing || '')
 
     p 
       label Godzina wyjścia:
-      input(type='time' name='hourOfDeparture')
+      input(type='time' name='hourOfDeparture' value=body.hourOfDeparture || '')
     p 
       label Data:
-      input(type='date' name='dateOfComing')
+      input(type='date' name='dateOfComing' value=body.dateOfComing || '')
  
     p  
       label Cel:
       textarea(name='purpose')
 
     p
-      input(type='submit' value='Zapisz')
-
-  if errors.errors !== undefined
-    each message in errors.errors
-      p=message
+      input(type='submit' value='Zapisz')    
   

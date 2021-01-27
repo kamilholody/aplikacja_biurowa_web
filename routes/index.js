@@ -22,11 +22,14 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res) => {
   const body = req.body;
 
+
   if (body.login === loginUserOne && body.password === passwordUserOne) {
     req.session.users = 1;
 
     res.redirect('/users');
   } else if (body.login === loginUserTwo && body.password === passwordUserTwo) {
+    req.session.users = 2;
+
     res.redirect('/users');
   } else {
     res.redirect('/login');

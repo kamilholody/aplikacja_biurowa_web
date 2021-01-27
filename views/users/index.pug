@@ -3,3 +3,28 @@ extends ../layout
 block content
   h1= title
   p Witaj w panelu użytkownika!
+
+  p
+      <input type='button' value='Dodaj Gościa' onClick=self.location.href=('http://localhost:3000/users/guests/add')>
+  table
+    tr
+      th ID
+      th IMIE
+      th NAZWISKO
+      th FIRMA
+      th GODZINA WEJŚCIA
+      th GODZINA WYJŚCIA
+      th DATA
+      th CEL WIZYTY
+    each item, index in data
+      tr
+        td=index
+        td=item.guestsName
+        td=item.guestsSurname 
+        td=item.companyName
+        td=item.hourOfComing
+        td=item.hourOfDeparture
+        td=item.dateOfComing
+        td=item.purpose
+        td
+          a(href=`/users//guests/delete/${item._id}`) Usuń

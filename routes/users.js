@@ -18,14 +18,21 @@ router.all('*', (req, res, next) => {
 
 router.get('/', (req, res) => {
 
-  res.render('users/index', {
-    title: `Zostałeś zalogowany!`
+  Guests.find({}, (err, data) => {
+    res.render('users/index', {
+      title: `Zostałeś zalogowany!`,
+      data
+    });
+
   });
 });
 
 router.get('/guests/add', (req, res) => {
+
   res.render('users/guests-form', {
-    title: `Formularz rejestracji gości`
+    title: `Formularz rejestracji gości`,
+    errors: {},
+    body: {}
   });
 });
 
@@ -36,17 +43,26 @@ router.post('/guests/add', (req, res) => {
 
   const errors = guestsData.validateSync();
 
+
   guestsData.save((err) => {
-    console.log(err);
-  });
+    if (err) {
+      res.render('users/guests-form', {
+        title: `Formularz rejestracji gości`,
+        errors,
+        body
+      });
+      return;
+    }
 
+    res.redirect('/')
 
-  res.render('users/guests-form', {
-    title: `Formularz rejestracji gości`,
-    errors
   });
 });
 
-
+router.get('/guests/delete/:id', (req, res) => {
+  Guests.findByIdAndDelete(req.params.id, (err) => {
+    res.redirect('/users')
+  })
+});
 
 module.exports = router;
