@@ -2,4 +2,34 @@ extends layout
 
 block content
   h1= title
-  p Witaj w oknie #{title}
+  form(method='get')
+    input.btn2(type='text' value=searchName name='searchName' placeholder='Wyszukaj po imieniu...')
+    input.btn2(type='text' value=searchSurname name='searchSurname' placeholder='Wyszukaj po nazwisku..')
+    input.btn2(type='text' value=searchCompany name='searchCompany' placeholder='Wyszukaj po nazwie firmy...')
+    p 
+    input.btn(type='submit' value='Wyszukaj')
+    p
+
+  table
+    tr
+      th ID
+      th IMIE
+      th NAZWISKO
+      th FIRMA
+      th GODZINA WEJŚCIA
+      th GODZINA WYJŚCIA
+      th DATA
+      th CEL WIZYTY
+    each item, index in data
+      tr
+        td=index
+        td(class='guestsName')=item.guestsName
+        td(class='guestsSurname')=item.guestsSurname 
+        td(class='companyName')=item.companyName
+        td=item.hourOfComing
+        td=item.hourOfDeparture
+        td(class='dateOfComing')=item.dateOfComing
+        td=item.purpose
+    
+      
+      

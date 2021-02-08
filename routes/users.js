@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 
   Guests.find({}, (err, data) => {
     res.render('users/index', {
-      title: `Zostałeś zalogowany!`,
+      title: `Witaj w panelu użytkownika!`,
       data
     });
 
@@ -54,10 +54,11 @@ router.post('/guests/add', (req, res) => {
       return;
     }
 
-    res.redirect('/')
+    res.redirect('/users')
 
   });
 });
+
 
 router.get('/guests/delete/:id', (req, res) => {
   Guests.findByIdAndDelete(req.params.id, (err) => {

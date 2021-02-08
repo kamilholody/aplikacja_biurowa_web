@@ -2,10 +2,8 @@ extends ../layout
 
 block content
   h1= title
-  p Witaj w panelu użytkownika!
-
   p
-      <input type='button' value='Dodaj Gościa' onClick=self.location.href=('http://localhost:3000/users/guests/add')>
+      <input class=btn type='button' value='Dodaj Gościa' onClick=self.location.href=('http://localhost:3000/users/guests/add')>
   table
     tr
       th ID
@@ -27,4 +25,4 @@ block content
         td=item.dateOfComing
         td=item.purpose
         td
-          a(href=`/users//guests/delete/${item._id}`) Usuń
+          a(href=`/users/guests/delete/${item._id}`) Usuń

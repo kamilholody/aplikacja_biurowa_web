@@ -1,7 +1,7 @@
 body {
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
+  margin: 0px auto;
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', sans-serif;
   font-size: 15px;
   background-color: #0cbaba;
@@ -16,7 +16,8 @@ body {
 }
 
 h1,
-p {
+p,
+form {
   text-align: center;
 }
 
@@ -54,6 +55,7 @@ textarea {
   border: 10px;
   cursor: pointer;
   width: 15%;
+  justify-content: center;
 }
 
 
@@ -66,4 +68,30 @@ label {
   display: block;
   margin: 0;
   overflow: hidden;
+}
+
+input.btn {
+  background-color: #ff5056;
+  color: white;
+}
+
+
+td,
+th {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+th {
+  background-color: #0cbaba;
+  color: black
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0px auto;
+}
+
+input.btn2 {
+  margin: 10px;
 }
