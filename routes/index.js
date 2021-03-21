@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
+
 const loginUserOne = "Recepcjonistka1";
 const passwordUserOne = "1234";
 const loginUserTwo = "Recepcjonistka2";
 const passwordUserTwo = "1234";
+const loginAdmin = "Admin";
+const passwordAdmin = "12345"
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -31,6 +34,10 @@ router.post('/login', (req, res) => {
     req.session.users = 2;
 
     res.redirect('/users');
+  } else if (body.login === loginAdmin && body.password === passwordAdmin) {
+    req.session.admin = 3;
+
+    res.redirect('/admin');
   } else {
     res.redirect('/login');
   }

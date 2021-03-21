@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const remindersSchema = new Schema({
     title: {
         type: String,
-        required: [true, 'Pole przypomnienie jest wymagane', ]
+        required: [true, 'Pole przypomnienie jest wymagane']
     },
     created: {
         type: Date,

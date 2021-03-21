@@ -5,7 +5,6 @@ const Reminders = require('../models/reminders')
 /* GET home page. */
 router.get('/', (req, res) => {
     Reminders.find({}, (err, data) => {
-        console.log(data);
 
         res.render('reminders', {
             title: 'Dodaj przypominenie',

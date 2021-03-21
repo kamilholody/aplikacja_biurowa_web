@@ -22,13 +22,13 @@ block content
       th CEL WIZYTY
     each item, index in data
       tr
-        td=index
+        td=index+1
         td(class='guestsName')=item.guestsName
         td(class='guestsSurname')=item.guestsSurname 
         td(class='companyName')=item.companyName
         td=item.hourOfComing
         td=item.hourOfDeparture
-        td(class='dateOfComing')=item.dateOfComing
+        td(class='dateOfComing')=item.dateOfComing.toDateString()
         td=item.purpose
     
       

@@ -15,15 +15,17 @@ block content
       th GODZINA WYJŚCIA
       th DATA
       th CEL WIZYTY
+      th
     each item, index in data
       tr
-        td=index
+        td=index+1
         td=item.guestsName
         td=item.guestsSurname 
         td=item.companyName
         td=item.hourOfComing
         td=item.hourOfDeparture
-        td=item.dateOfComing
+        td=item.dateOfComing.toDateString()
         td=item.purpose
         td
-          a(href=`/users/guests/delete/${item._id}`) Usuń
+          a(href=`/users/guests/delete/${item._id}` class="button") Usuń
+  

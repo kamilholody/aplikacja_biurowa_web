@@ -11,15 +11,16 @@ block content
     p
       input.btn2(type='text' name='title' placeholder='Wprowadź przypomnienie...' value=body.title || '')
     p
-      <input class=btn type='submit' value='Zapisz'>
+      input.btn(type='submit' value='Zapisz') 
   
   table
     tr
       th ID
       th TYTUŁ
+      th 
     each item, index in data
       tr
-        td=index
-        td=item.title
+        td=index + 1
+        td=item.title 
         td
-          a(href=`/reminders/delete/${item._id}`) Usuń
+          a(href=`/reminders/delete/${item._id}` class="button") Usuń

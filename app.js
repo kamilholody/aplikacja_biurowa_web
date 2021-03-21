@@ -9,20 +9,24 @@ const mongoose = require('mongoose');
 
 mongoose.connect(config.db, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
+// Connect Database
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
   console.log('We are connect with db!');
 });
 
+// Define Routes
 const indexRouter = require('./routes/index');
 const guestsRouter = require('./routes/guests');
 const remindersRouter = require('./routes/reminders');
 const loginRouter = require('./routes/login');
 const usersRouter = require('./routes/users');
+const adminRouter = require('./routes/admin');
 
 var app = express();
 
@@ -56,6 +60,13 @@ app.use('/guests', guestsRouter);
 app.use('/reminders', remindersRouter);
 app.use('/login', loginRouter);
 app.use('/users', usersRouter);
+app.use('/admin', adminRouter);
+
+// Init Middleware
+
+app.use(express.json({
+  extended: false
+}));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

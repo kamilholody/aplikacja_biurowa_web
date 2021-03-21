@@ -3,16 +3,15 @@ body {
   padding: 0;
   margin: 0px auto;
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   background-color: #0cbaba;
-  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
-  color: white;
-
+  background-image: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+  color: black;
 }
 
 .active {
   font-weight: bold;
-  color: lime;
+  color: #1E90FF;
 }
 
 h1,
@@ -27,6 +26,8 @@ nav {
   text-align: right;
   line-height: 20px;
   background-color: black;
+  display: flexbox;
+  flex: 0 1 300px;
 }
 
 nav ul {
@@ -35,16 +36,17 @@ nav ul {
 }
 
 nav li a {
-  padding: 0 5px;
+  margin: 0px;
+  line-height: normal;
   text-transform: uppercase;
   color: white;
   font-size: 20px;
   text-decoration: none;
-  transition: color lime .3s;
+  transition: color #1E90FF .3s;
 }
 
 nav li a:hover {
-  color: lime;
+  color: #1E90FF;
 }
 
 input,
@@ -71,10 +73,9 @@ label {
 }
 
 input.btn {
-  background-color: #ff5056;
-  color: white;
+  background-color: #1E90FF;
+  color: black;
 }
-
 
 td,
 th {
@@ -83,16 +84,24 @@ th {
 }
 
 th {
-  background-color: #0cbaba;
   color: black
 }
 
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
   margin: 0px auto;
 }
 
 input.btn2 {
   margin: 10px;
   width: 20%;
+}
+
+.button {
+  font: 15px 'Gill Sans', 'Gill Sans MT', 'Calibri', sans-serif;
+  text-decoration: solid;
+  background-color: orangered;
+  color: black;
+  padding: 2px 20px 2px 20px;
+  border-radius: 5px;
 }
