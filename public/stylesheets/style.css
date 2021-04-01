@@ -105,3 +105,16 @@ input.btn2 {
   padding: 2px 20px 2px 20px;
   border-radius: 5px;
 }
+
+button {
+  background-color: orangered;
+  color: black;
+  padding: 5px 5px;
+  border-radius: 5px;
+  border: 10px;
+  cursor: pointer;
+  width: 10%;
+  justify-content: right;
+  margin: 10px;
+
+}

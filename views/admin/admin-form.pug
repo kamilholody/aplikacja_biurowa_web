@@ -1,24 +1,26 @@
 extends ../layout
 
 block content
-  h1= title
+  header 
+    <form action="/logout?_method=DELETE" method="POST" style="text-align: right">
+    <button type="submit">Wyloguj</button>
+    </form>
+  h1= title 
+  p
+      <input class=btn type='button' value='Zarejestruj uźytkownika' onClick=self.location.href=('http://localhost:3000/admin/add')>
+ 
+  p Lista użytkowników:
 
-  //- if errors.errors !== undefined
-  //-   each message in errors.errors
-  //-     p=message
-
-  form(method='post')
-    p 
-      label Imię:
-      input(type='text' name='userName' placeholder='Podaj imie użytkownika...' || '')
-
-    p 
-      label Email:
-      input(type='text' name='email' placeholder='Podaj email użytkownika...' || '')
-
-    p 
-      label Hasło:
-      input(type='text' name='password' placeholder='Podaj hasło użytkownika...' || '')
-
-    p
-      input.btn(type='submit' value='Utwórz')
+  table
+    tr
+      th ID
+      th IMIE
+      th EMAIL
+      th
+    each item, index in data
+      tr
+        td=index+1
+        td=item.userName
+        td=item.email
+        td
+          a(href=`/admin/delete/${item._id}` class="button") Usuń

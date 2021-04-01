@@ -1,6 +1,10 @@
 extends ../layout
 
 block content
+  header 
+    <form action="/logout?_method=DELETE" method="POST" style="text-align: right">
+    <button type="submit">Wyloguj</button>
+    </form>
   h1= title
   p
       <input class=btn type='button' value='Dodaj Gościa' onClick=self.location.href=('http://localhost:3000/users/guests/add')>

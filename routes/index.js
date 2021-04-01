@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/users');
+const {
+  check,
+  validationResult
+} = require('express-validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config')
+const passport = require('passport');
+const methodOverride = require('method-override');
 
-
-const loginUserOne = "Recepcjonistka1";
-const passwordUserOne = "1234";
-const loginUserTwo = "Recepcjonistka2";
-const passwordUserTwo = "1234";
 const loginAdmin = "Admin";
-const passwordAdmin = "12345"
+const passwordAdmin = "123456"
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -22,25 +27,86 @@ router.get('/login', (req, res) => {
   });
 });
 
-router.post('/login', (req, res) => {
+// Logowanie admina
+router.post('/login', (req, res, next) => {
   const body = req.body;
 
 
-  if (body.login === loginUserOne && body.password === passwordUserOne) {
-    req.session.users = 1;
-
-    res.redirect('/users');
-  } else if (body.login === loginUserTwo && body.password === passwordUserTwo) {
-    req.session.users = 2;
-
-    res.redirect('/users');
-  } else if (body.login === loginAdmin && body.password === passwordAdmin) {
-    req.session.admin = 3;
+  if (body.email === loginAdmin && body.password === passwordAdmin) {
+    req.session.admin = 2;
 
     res.redirect('/admin');
-  } else {
-    res.redirect('/login');
+
+    return;
   }
+  next();
+});
+
+// Logowanie pozostałych użytkowników
+router.post('/login', [check('email', 'Plaese include a valid email').isEmail(),
+  check('password', 'Password is required ').exists()
+], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({
+      errors: errors.array()
+    });
+  }
+  const {
+    email,
+    password
+  } = req.body;
+
+  try {
+    let user = await User.findOne({
+      email
+    });
+
+    if (!user) {
+      res.status(400).json({
+        errors: [{
+          msg: 'Podałeś błędne dane!'
+        }]
+      });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    req.session.users = 1;
+    res.redirect('/users')
+
+    if (!isMatch) {
+      res.status(400).json({
+        errors: [{
+          msg: 'Podałeś błędne dane!'
+        }]
+      });
+    }
+
+    const payload = {
+      user: {
+        id: user.id
+      }
+    }
+
+    jwt.sign(payload, config.get('jwtSecret'), {
+        expiresIn: 360000
+      },
+      (err, token) => {
+        if (err) throw err;
+        res.json({
+          token
+        })
+      });
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error')
+  }
+});
+router.delete('/logout', (req, res) => {
+  res.clearCookie('session');
+  req.logout()
+  res.redirect('/login')
 });
 
 module.exports = router;

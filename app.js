@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const config = require('./config');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 mongoose.connect(config.db, {
   useNewUrlParser: true,
@@ -28,6 +29,7 @@ const loginRouter = require('./routes/login');
 const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin');
 
+
 var app = express();
 
 
@@ -48,12 +50,15 @@ app.use(cookieSession({
   keys: config.keySession,
   maxAge: config.maxAgeSession
 }));
+app.use(methodOverride('_method'));
+
 
 app.use(function (req, res, next) {
   res.locals.path = req.path;
 
   next();
 });
+
 
 app.use('/', indexRouter);
 app.use('/guests', guestsRouter);
