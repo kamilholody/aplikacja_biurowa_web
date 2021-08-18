@@ -10,9 +10,13 @@ const jwt = require('jsonwebtoken');
 const config = require('config')
 const passport = require('passport');
 const methodOverride = require('method-override');
+const auth = require('../models/users');
+const alert = require('alert');
+
 
 const loginAdmin = "Admin";
 const passwordAdmin = "123456"
+
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -43,8 +47,19 @@ router.post('/login', (req, res, next) => {
 });
 
 // Logowanie pozostałych użytkowników
-router.post('/login', [check('email', 'Plaese include a valid email').isEmail(),
-  check('password', 'Password is required ').exists()
+router.get('/', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error')
+  }
+})
+
+
+router.post('/login', [check('email', 'Podaj pełny adres e-mail').isEmail(),
+  check('password', 'Hasło jest wymagane ').exists()
 ], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -63,23 +78,19 @@ router.post('/login', [check('email', 'Plaese include a valid email').isEmail(),
     });
 
     if (!user) {
-      res.status(400).json({
-        errors: [{
-          msg: 'Podałeś błędne dane!'
-        }]
-      });
+      res.status(400).redirect('/login');
+      alert('Podałeś błędny adres e-mail!');
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    req.session.users = 1;
-    res.redirect('/users')
 
-    if (!isMatch) {
-      res.status(400).json({
-        errors: [{
-          msg: 'Podałeś błędne dane!'
-        }]
-      });
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if (isMatch) {
+      req.session.users = user;
+      res.redirect('/users')
+    } else if (!isMatch) {
+      res.status(400).redirect('/login')
+      alert('Podałeś błędne hasło!');
     }
 
     const payload = {
@@ -100,7 +111,8 @@ router.post('/login', [check('email', 'Plaese include a valid email').isEmail(),
 
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error')
+    res.status(500).redirect('/login');
+    alert('Podane dane logowania są nie poprawne!');
   }
 });
 router.delete('/logout', (req, res) => {

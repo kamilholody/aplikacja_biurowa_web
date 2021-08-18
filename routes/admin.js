@@ -42,7 +42,7 @@ router.get('/add', (req, res) => {
     });
 });
 
-router.post('/add', [check('userName', 'Name is required').not().isEmpty(), check('email', 'Plaese include a valid email').isEmail(),
+router.post('/add', [check('userName', 'Name is required').not().isEmpty(), check('email', 'Podaj prawidłowy adres').isEmail(),
     check('password', 'Please enter a password with 6 or more characters').isLength({
         min: 6
     })

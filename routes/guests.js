@@ -3,6 +3,16 @@ const router = express.Router();
 const Guests = require('../models/guests');
 
 /* GET home page. */
+router.all('*', (req, res, next) => {
+    if ((!req.session.users) && (!req.session.admin)) {
+        res.redirect('login');
+
+        return;
+    }
+
+    next();
+});
+
 router.get('/', (req, res) => {
     const searchName = req.query.searchName;
     const searchSurname = req.query.searchSurname;

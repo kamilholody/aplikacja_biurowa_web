@@ -25,6 +25,10 @@ const guestsSchema = new Schema({
         type: Date,
         required: [true, 'Pole Data  jest wymagane!']
     },
+    visitRoom: {
+        type: String,
+        required: [true, 'Pole Nr pokoju jest wymagane!']
+    },
     purpose: String,
     created: {
         type: Date,

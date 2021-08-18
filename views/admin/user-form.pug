@@ -3,18 +3,22 @@ extends ../layout
 block content
   h1= title
 
+  if errors.errors !== undefined
+    each message in errors.errors
+      p=message
+
   form(method='post')
     p 
       label Imię:
-      input(type='text' name='userName' placeholder='Podaj imie użytkownika...' || '')
+      input(type='text' name='userName' value=body.userName placeholder='Podaj imie użytkownika...' || '')
 
     p 
       label Email:
-      input(type='text' name='email' placeholder='Podaj email użytkownika...' || '')
+      input(type='text' name='email' value=body.email placeholder='Podaj email użytkownika...' || '')
 
     p 
       label Hasło:
-      input(type='text' name='password' placeholder='Podaj hasło użytkownika...' || '')
+      input(type='text' name='password' value=body.password placeholder='Podaj hasło użytkownika...' || '')
 
     p
       input.btn(type='submit' value='Utwórz')

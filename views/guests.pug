@@ -19,6 +19,7 @@ block content
       th GODZINA WEJŚCIA
       th GODZINA WYJŚCIA
       th DATA
+      th NR POKOJU
       th CEL WIZYTY
     each item, index in data
       tr
@@ -29,6 +30,7 @@ block content
         td=item.hourOfComing
         td=item.hourOfDeparture
         td(class='dateOfComing')=item.dateOfComing.toDateString()
+        td=item.visitRoom
         td=item.purpose
     
       

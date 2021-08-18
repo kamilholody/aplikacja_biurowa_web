@@ -7,7 +7,7 @@ block content
     </form>
   h1= title 
   p
-      <input class=btn type='button' value='Zarejestruj uźytkownika' onClick=self.location.href=('http://localhost:3000/admin/add')>
+      <input class=btn type='button' value='Rejestracja uźytkownika' onClick=self.location.href=('http://localhost:3000/admin/add')>
  
   p Lista użytkowników:
 
@@ -16,11 +16,13 @@ block content
       th ID
       th IMIE
       th EMAIL
+      th DATA REJESTRACJI
       th
     each item, index in data
       tr
         td=index+1
         td=item.userName
         td=item.email
+        td=item.date.toDateString()
         td
           a(href=`/admin/delete/${item._id}` class="button") Usuń

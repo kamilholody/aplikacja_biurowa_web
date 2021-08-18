@@ -27,11 +27,17 @@ block content
     p 
       label Godzina wyjścia:
       input(type='time' name='hourOfDeparture' value=body.hourOfDeparture || '')
+
     p 
-      label Data:
+      label Data odwiedzin:
       input(type='date' name='dateOfComing' value=body.dateOfComing || '')
+
+    p 
+      label Nr Pokoju:
+      input(type='text' name='visitRoom' value=body.visitRoom placeholder='Wprowadź numer pokoju..' || '')
+
     p  
-      label Cel:
+      label Cel wizyty:
       textarea(name='purpose' placeholder='Wprowadź cel odwiedzin...')
 
     p

@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.all('*', (req, res, next) => {
-  if (!req.session.users) {
+  if ((!req.session.users) && (!req.session.admin)) {
     res.redirect('login');
 
     return;

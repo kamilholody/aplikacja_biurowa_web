@@ -3,6 +3,17 @@ const router = express.Router();
 const Reminders = require('../models/reminders')
 
 /* GET home page. */
+
+router.all('*', (req, res, next) => {
+    if ((!req.session.users) && (!req.session.admin)) {
+        res.redirect('login');
+
+        return;
+    }
+
+    next();
+});
+
 router.get('/', (req, res) => {
     Reminders.find({}, (err, data) => {
 
