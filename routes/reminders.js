@@ -19,8 +19,8 @@ router.get('/', (req, res) => {
 
         res.render('reminders', {
             title: 'Dodaj przypominenie',
-            body: {},
             errors: {},
+            body: {},
             data
         });
     });

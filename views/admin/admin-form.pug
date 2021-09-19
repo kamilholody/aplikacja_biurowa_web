@@ -9,7 +9,7 @@ block content
   p
       <input class=btn type='button' value='Rejestracja uźytkownika' onClick=self.location.href=('http://localhost:3000/admin/add')>
  
-  p Lista użytkowników:
+  p Lista użytkowników
 
   table
     tr
@@ -25,4 +25,4 @@ block content
         td=item.email
         td=item.date.toDateString()
         td
-          a(href=`/admin/delete/${item._id}` class="button") Usuń
+          a.id(href=`/admin/delete/${item._id}` class="button") Usuń

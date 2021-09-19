@@ -4,7 +4,7 @@ body {
   margin: 0px auto;
   font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', sans-serif;
   font-size: 18px;
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+
   color: black;
 }
 
@@ -24,7 +24,7 @@ nav {
   height: 50px;
   text-align: right;
   line-height: 20px;
-  background-color: black;
+  background-color: navy;
   display: flexbox;
   flex: 0 1 300px;
 }
@@ -53,7 +53,7 @@ textarea {
   padding: 5px 5px;
   border-radius: 5px;
   left: 20px;
-  border: 10px;
+  border: 1px solid navy;
   cursor: pointer;
   width: 15%;
   justify-content: center;
@@ -73,12 +73,12 @@ label {
 
 input.btn {
   background-color: #1E90FF;
-  color: black;
+  color: white;
 }
 
 td,
 th {
-  border: 1px solid black;
+  border: 1px solid navy;
   padding: 3px;
 }
 
@@ -100,20 +100,34 @@ input.btn2 {
   font: 15px 'Gill Sans', 'Gill Sans MT', 'Calibri', sans-serif;
   text-decoration: solid;
   background-color: orangered;
-  color: black;
+  border: 1px solid navy;
+  color: white;
   padding: 2px 20px 2px 20px;
   border-radius: 5px;
 }
 
 button {
   background-color: orangered;
-  color: black;
+  color: white;
   padding: 5px 5px;
   border-radius: 5px;
-  border: 10px;
+  border: 1px solid navy;
   cursor: pointer;
   width: 10%;
   justify-content: right;
   margin: 10px;
+  text-decoration: none;
 
+}
+
+img {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+}
+
+a.id {
+  text-decoration: none;
 }

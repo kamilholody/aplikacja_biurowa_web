@@ -10,34 +10,34 @@ block content
 
   form(method='post')
     p 
-      label Imię:
+      label Imię
       input(type='text' name='guestsName' value=body.guestsName placeholder='Wprowadź imie...' || '')
     p 
-      label Nazwisko:
+      label Nazwisko
       input(type='text' name='guestsSurname' value=body.guestsSurname placeholder='Wprowadź nawzwisko...' || '')
 
     p 
-      label Nazwa firmy:
+      label Nazwa firmy
       input(type='text' name='companyName' value=body.companyName placeholder='Wprowadź firmę..' || '')
 
     p 
-      label Godzina wejścia:
+      label Godzina wejścia
       input(type='time' name='hourOfComing' value=body.hourOfComing || '')
 
     p 
-      label Godzina wyjścia:
+      label Godzina wyjścia
       input(type='time' name='hourOfDeparture' value=body.hourOfDeparture || '')
 
     p 
-      label Data odwiedzin:
+      label Data odwiedzin
       input(type='date' name='dateOfComing' value=body.dateOfComing || '')
 
     p 
-      label Nr Pokoju:
+      label Nr Pokoju
       input(type='text' name='visitRoom' value=body.visitRoom placeholder='Wprowadź numer pokoju..' || '')
 
     p  
-      label Cel wizyty:
+      label Cel wizyty
       textarea(name='purpose' placeholder='Wprowadź cel odwiedzin...')
 
     p

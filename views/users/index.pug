@@ -5,6 +5,7 @@ block content
     <form action="/logout?_method=DELETE" method="POST" style="text-align: right">
     <button type="submit">Wyloguj</button>
     </form>
+
   h1= title
   p
       <input class=btn type='button' value='Dodaj Gościa' onClick=self.location.href=('http://localhost:3000/users/guests/add')>
@@ -33,5 +34,5 @@ block content
         td=item.visitRoom
         td=item.purpose
         td
-          a(href=`/users/guests/delete/${item._id}` class="button") Usuń
+          a.id(href=`/users/guests/delete/${item._id}` class="button") Usuń
   

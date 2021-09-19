@@ -6,7 +6,7 @@ block content
   if errors.errors !== undefined
     each message in errors.errors
       p=message
-
+  
   form(method='post')
     p
       input.btn2(type='text' name='title' placeholder='Wprowadź przypomnienie...' value=body.title || '')
@@ -23,4 +23,4 @@ block content
         td=index + 1
         td=item.title 
         td
-          a(href=`/reminders/delete/${item._id}` class="button") Usuń
+          a.id(href=`/reminders/delete/${item._id}` class="button") Usuń
